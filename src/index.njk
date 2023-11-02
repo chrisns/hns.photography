@@ -16,7 +16,6 @@ eleventyNavigation:
     <p class="lead h3">{{ metadata.about }}</p>
   </section>
 
-  {# {{ albums | dump }} #}
   <ul>
     {% for album in albums.album %}
       <li class="postlist__item post-card">
@@ -26,21 +25,23 @@ eleventyNavigation:
       </li>
     {% endfor %}
   </ul>
-  <script type="module">
-  import PhotoSwipeLightbox from "/assets/scripts/vendors/photoswipe-lightbox.esm.js";
-  import PhotoSwipe from "/assets/scripts/vendors/photoswipe.esm.js";
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: ".pswp-gallery",
-    children: "a",
-    pswpModule: PhotoSwipe,
-  });
-  lightbox.init();
-</script>
-  {# {% set maxPosts = collections.posts.length | min(3) %}
-  <h2>Latest {% if maxPosts == 1 %}post{% else %}posts{% endif %}
-  </h2> #}
 
-  {# {% set postslist = collections.posts | head(-3) | reverse %} #}
-  {# {% set postslistCounter = collections.posts | length %} #}
-  {# {% include "layouts/partials/posts-list.njk" %} #}
+  <section class="reviews">
+    <h2>Reviews</h2>
+    <ul>
+      {% for review in reviews.review %}
+        <li>
+          <h3>{{review.name}}</h3>
+          <p>{{review.body}}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <script type="module">
+    import PhotoSwipeLightbox from "/assets/scripts/vendors/photoswipe-lightbox.esm.js";
+    import PhotoSwipe from "/assets/scripts/vendors/photoswipe.esm.js";
+    const lightbox = new PhotoSwipeLightbox({gallery: ".pswp-gallery", children: "a", pswpModule: PhotoSwipe});
+    lightbox.init();
+  </script>
 {% endblock %}
