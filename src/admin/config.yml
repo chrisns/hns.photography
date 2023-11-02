@@ -30,6 +30,7 @@ collections:
             - { label: "Email", name: "email", widget: "string" }
             - { label: "instagram", name: "instagram", widget: "string" }
             - { label: "facebook", name: "facebook", widget: "string" }
+
       - label: "Albums to pull"
         name: "albums"
         file: "src/_data/albums.json"
@@ -42,46 +43,12 @@ collections:
             - { label: "Album ID", name: "albumid", hint: "e.g. a.1992235817715136", widget: "string" }
             - { name: "photos", widget: "hidden" }
 
-  # - name: "pages"
-  #   label: "Page"
-  #   slug: "{{slug}}"
-  #   files:
-
-  #     # Home page
-  #     - label: "Home Page"
-  #       name: "home"
-  #       file: "src/_data/home.json"
-  #       fields:
-  #         - { label: Title, name: h1, widget: string }
-  #         - { label: "Body", name: "lead", widget: "markdown", required: false }
-  #         - { label: Image, name: image, widget: image, required: false }
-  #         - {
-  #             label: Image Alt Text,
-  #             name: image_alt,
-  #             widget: string,
-  #             required: false,
-  #           }
-
-  #     # About page
-  #     - label: "About Page"
-  #       name: "about"
-  #       file: "src/pages/about.md"
-  #       fields:
-  #         - { label: "Title", name: "title", widget: "string" }
-  #         - { label: Subtitle, name: subtitle, widget: string, required: false }
-  #         - { label: "Body", name: "body", widget: "markdown", required: false }
-  #         - {
-  #             label: "Meta Description",
-  #             name: "metaDescription",
-  #             widget: "text",
-  #             required: false,
-  #           }
-  #         - { label: "Publish Date", name: "date", widget: "datetime" }
-  #         - { label: "Permalink", name: "permalink", widget: "string" }
-  #         - label: "Navigation" # https://www.11ty.dev/docs/plugins/navigation/
-  #           name: "eleventyNavigation"
-  #           widget: "object"
-  #           fields:
-  #             - { label: "Key", name: "key", widget: "string" }
-  #             - { label: "Order", name: "order", widget: "number", default: 0 }
-
+      - label: "Reviews"
+        name: "reviews"
+        file: "src/_data/reviews.json"
+        fields:
+          - name: review
+            widget: list
+            fields:
+            - { label: "Name", name: "name", widget: "string" }
+            - { label: "Review", name: "body", widget: "markdown" }

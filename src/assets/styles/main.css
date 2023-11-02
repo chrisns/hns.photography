@@ -924,10 +924,12 @@ figcaption {
 
 .post-card {
   position: relative;
-  float: left;
-  width: 49%;
   padding: 0%;
   margin: 2px; }
+  @media all and (min-width: 60em) {
+    .post-card {
+      float: left;
+      width: 49%; } }
   .post-card:hover .post-card__link,
   .post-card:hover .post-card__link:visited {
     color: var(--link-color);
@@ -955,7 +957,7 @@ figcaption {
 
 .post-card__image {
   display: flex;
-  height: 20rem;
+  height: 19rem;
   filter: grayscale(1) brightness(1); }
   .post-card__image:hover {
     filter: none; }
