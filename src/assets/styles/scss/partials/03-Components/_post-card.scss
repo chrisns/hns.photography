@@ -1,5 +1,10 @@
 .post-card {
   position: relative;
+  float: left;
+  width: 49%;
+  padding: 0%;
+  margin: 2px;
+
 
   &:hover {
     .post-card__link,
@@ -39,32 +44,35 @@
 
 .post-card__image {
   display: flex;
-  height: 10rem;
+  height: 20rem;
   filter: grayscale(1) brightness(1);
-
+  &:hover {
+    filter:none;
+  }
   img {
     width: 100%;
     object-fit: cover;
   }
 }
+@mixin background-opacity($color, $opacity: 0.3) {
+  background: $color; /* The Fallback */
+  background: rgba($color, $opacity);
+}
+@use 'sass:color';
 
 .post-card__content {
   padding: var(--space-lg-1h);
+  background-color: #{'rgb(from var(--body-background) r g b / 50%)'};
+  position: absolute;
+  width: 100%;
+  top: 5.5rem;
+  height: 9rem;
 
   p:not(.post-card__title) {
     font-size: var(--font-size-base);
   }
 }
 
-.post-card__tags {
-  margin-bottom: var(--space-lg-1);
-}
-
 .post-card__title {
   margin: var(--space-sm-8) var(--space-0);
-}
-
-.post-card__date-time {
-  padding-top: var(--space-lg-1);
-  border-top: var(--border-width-thin) solid var(--grey-200);
 }

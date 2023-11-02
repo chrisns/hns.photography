@@ -26,6 +26,16 @@ eleventyNavigation:
       </li>
     {% endfor %}
   </ul>
+  <script type="module">
+  import PhotoSwipeLightbox from "/assets/scripts/vendors/photoswipe-lightbox.esm.js";
+  import PhotoSwipe from "/assets/scripts/vendors/photoswipe.esm.js";
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: ".pswp-gallery",
+    children: "a",
+    pswpModule: PhotoSwipe,
+  });
+  lightbox.init();
+</script>
   {# {% set maxPosts = collections.posts.length | min(3) %}
   <h2>Latest {% if maxPosts == 1 %}post{% else %}posts{% endif %}
   </h2> #}

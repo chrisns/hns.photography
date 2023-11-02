@@ -11,6 +11,12 @@
     target="_blank">
     {% if loop.first %}
       <img src="assets/images/scraped/{{ image.id }}.jpg" alt="{{ params.post.title }}">
+      <div class="post-card__content">
+          <p class="post-card__title h5">
+            {{ params.post.title }}
+          </p>
+          <p>{{ params.post.description }}</p>
+      </div>
     {% endif %}
   </a>
     {% endfor %}
@@ -19,21 +25,6 @@
 </div>
 
 
-<script type="module">
-  import PhotoSwipeLightbox from "/assets/scripts/vendors/photoswipe-lightbox.esm.js";
-  import PhotoSwipe from "/assets/scripts/vendors/photoswipe.esm.js";
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: "#gallery--getting-started",
-    children: "a",
-    pswpModule: PhotoSwipe,
-  });
-  lightbox.init();
-</script>
 
 
-<div class="post-card__content">
-    <p class="post-card__title h5">
-      {{ params.post.title }}
-    </p>
-    <p>{{ params.post.description }}</p>
-</div>
+
