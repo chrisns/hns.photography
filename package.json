@@ -76,7 +76,7 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "mermaid": "^9.1.2",
+    "mermaid": "^10.0.0",
     "photoswipe": "^5.4.2"
   }
 }
