@@ -1,17 +1,7 @@
 "use strict";
 
-if ("serviceWorker" in navigator) {
-  navigator
-    .serviceWorker
-    .register("/service-worker.js")
-    .then(function() {
-      console.log("ServiceWorker has been registered!");
-    })
-    .catch(console.error);
-}
 
-document.addEventListener("DOMContentLoaded", function(){
-
+document.addEventListener("DOMContentLoaded", function () {
   // Persistent dark mode using local storage:
   // https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/
 
@@ -26,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
   if (currentTheme == "dark") {
     // ...let's toggle the .dark-theme class on the body
     document.body.classList.toggle("dark-theme");
-  // Otherwise, if the user's preference in localStorage is light...
+    // Otherwise, if the user's preference in localStorage is light...
   } else if (currentTheme == "light") {
     // ...let's toggle the .light-theme class on the body
     document.body.classList.toggle("light-theme");
@@ -52,5 +42,4 @@ document.addEventListener("DOMContentLoaded", function(){
     // Finally, let's save the current preference to localStorage to keep using it
     localStorage.setItem("theme", theme);
   });
-
 });

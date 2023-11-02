@@ -12,17 +12,25 @@ eleventyNavigation:
 
 {% block content %}
   <section class="hero">
-    <h1>{{ home.h1 }}</h1>
-    <p class="lead h3">{{ home.lead }}</p>
+    <h1>{{ metadata.title }}</h1>
+    <p class="lead h3">{{ metadata.about }}</p>
   </section>
 
-  {% set maxPosts = collections.posts.length | min(3) %}
+  {# {{ albums | dump }} #}
+  <ul>
+    {% for album in albums.album %}
+      <li class="postlist__item post-card">
+        {{ component('post-card', {
+          post: album
+        }) }}
+      </li>
+    {% endfor %}
+  </ul>
+  {# {% set maxPosts = collections.posts.length | min(3) %}
   <h2>Latest {% if maxPosts == 1 %}post{% else %}posts{% endif %}
-  </h2>
+  </h2> #}
 
-  {% set postslist = collections.posts | head(-3) | reverse %}
-  {% set postslistCounter = collections.posts | length %}
-  {% include "layouts/partials/posts-list.njk" %}
-
-  <p>More posts can be found in the <a class="underline-dashed" href="{{ '/posts/' | url }}">blog</a>.</p>
+  {# {% set postslist = collections.posts | head(-3) | reverse %} #}
+  {# {% set postslistCounter = collections.posts | length %} #}
+  {# {% include "layouts/partials/posts-list.njk" %} #}
 {% endblock %}

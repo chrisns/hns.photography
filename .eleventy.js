@@ -8,13 +8,13 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const CleanCSS = require("clean-css");
 const criticalCss = require("eleventy-critical-css");
-const pluginPWA = require("eleventy-plugin-pwa");
+// const pluginPWA = require("eleventy-plugin-pwa");
 const imageShortcode = require('./utils/shortcodes/imageProcess.js');
 const dateFilter = require("./utils/filters/dateFilter.js");
 const imgSize = require("./utils/filters/imgSize.js");
 const cacheBuster = require("./utils/filters/cacheBuster.js");
 const tagList = require("./utils/collections/tagList.js");
-const readingTime = require('eleventy-plugin-reading-time');
+// const readingTime = require('eleventy-plugin-reading-time');
 const mila = require('markdown-it-link-attributes');
 
 // Import transforms
@@ -24,8 +24,7 @@ const htmlMinTransform = require("./utils/transforms/html-min-transform.js");
 // TO-DO: Debug to find the resource leakage
 process.setMaxListeners(15);
 
-module.exports = function(eleventyConfig) {
-
+module.exports = function (eleventyConfig) {
   let env = process.env.ELEVENTY_ENV;
 
   /**
@@ -37,20 +36,20 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
   // CriticalCSS
-  if (env === 'production') {
+  if (env === "production") {
     eleventyConfig.addPlugin(criticalCss, {
       height: 900,
       width: 1300,
     });
   }
   // PWA
-  eleventyConfig.addPlugin(pluginPWA);
-  eleventyConfig.addPlugin(readingTime);
+  // eleventyConfig.addPlugin(pluginPWA);
+  // eleventyConfig.addPlugin(readingTime);
 
   // Setup mermaid markdown highlighter
   const highlighter = eleventyConfig.markdownHighlighter;
   eleventyConfig.addMarkdownHighlighter((str, language) => {
-    if (language === 'mermaid') {
+    if (language === "mermaid") {
       return `<pre class="mermaid">${str}</pre>`;
     }
     return highlighter(str, language);
@@ -75,13 +74,15 @@ module.exports = function(eleventyConfig) {
    *
    * @link https://www.11ty.io/docs/filters/
    */
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+  eleventyConfig.addFilter("readableDate", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
+      "dd LLLL yyyy"
+    );
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('dateStringISO', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+  eleventyConfig.addFilter("dateStringISO", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
@@ -90,7 +91,7 @@ module.exports = function(eleventyConfig) {
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
-    if( n < 0 ) {
+    if (n < 0) {
       return array.slice(n);
     }
 
@@ -102,7 +103,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Minify inline style
-  eleventyConfig.addFilter("cssmin", function(code) {
+  eleventyConfig.addFilter("cssmin", function (code) {
     return new CleanCSS({}).minify(code).styles;
   });
 
@@ -154,18 +155,33 @@ module.exports = function(eleventyConfig) {
    */
   eleventyConfig.addPassthroughCopy("./src/assets/images");
   eleventyConfig.addPassthroughCopy("./src/assets/styles/*.css");
-  eleventyConfig.addPassthroughCopy({"node_modules/mermaid/dist/mermaid.min.js": "/assets/scripts/vendors/mermaid.min.js"});
-  eleventyConfig.addPassthroughCopy("./src/robots.txt");
-  eleventyConfig.addPassthroughCopy("./src/manifest.json");
-  eleventyConfig.addPassthroughCopy("./src/assets/scripts/vendors/modernizr.min.js");
-  if (env === 'production') {
+  // eleventyConfig.addPassthroughCopy({
+  //   "node_modules/mermaid/dist/mermaid.min.js":
+  //     "/assets/scripts/vendors/mermaid.min.js",
+  // });
+
+  // eleventyConfig.addPassthroughCopy("./src/robots.txt");
+  // eleventyConfig.addPassthroughCopy("./src/manifest.json");
+  eleventyConfig.addPassthroughCopy(
+    "./src/assets/scripts/vendors/modernizr.min.js"
+  );
+
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/photoswipe/dist/photoswipe-lightbox.esm.js":
+      "/assets/scripts/vendors/photoswipe-lightbox.esm.js",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/photoswipe/dist/photoswipe.esm.js":
+      "/assets/scripts/vendors/photoswipe.esm.js",
+  });
+
+  if (env === "production") {
     eleventyConfig.addPassthroughCopy("./src/assets/scripts/bundle.min.js");
   } else {
     eleventyConfig.addPassthroughCopy("./src/assets/styles/*.map");
     eleventyConfig.addPassthroughCopy("./src/assets/scripts/index.js");
-  };
+  }
   eleventyConfig.addPassthroughCopy("./src/admin");
-
 
   /**
    * Set custom markdown library instance
@@ -175,31 +191,31 @@ module.exports = function(eleventyConfig) {
   let markdownLibrary = markdownIt({
     html: true,
     breaks: true,
-    linkify: true
+    linkify: true,
   })
-  .use(mila, {
-    pattern: /^(?!(https:\/\/yetty\.netlify\.app|#)).*$/gm,
-    attrs: {
-      target: '_blank',
-      rel: 'noopener noreferrer'
-    }
-  })
-  .use(markdownItAnchor, {
-    // Options with v8.1 for accessibility
-    permalink: markdownItAnchor.permalink.linkAfterHeader({
-      class: "direct-link",
-      symbol: "",
-      style: 'visually-hidden',
-      assistiveText: title => `Permalink to “${title}”`,
-      visuallyHiddenClass: 'visually-hidden'
-    }),
-    slugify: (s) =>
-      s
-        .trim()
-        .toLowerCase()
-        .replace(/[\s+~\/]/g, "_")
-        .replace(/[().`,%·'"!?¿:@*]/g, ""),
-  });
+    .use(mila, {
+      pattern: /^(?!(https:\/\/yetty\.netlify\.app|#)).*$/gm,
+      attrs: {
+        target: "_blank",
+        rel: "noopener noreferrer",
+      },
+    })
+    .use(markdownItAnchor, {
+      // Options with v8.1 for accessibility
+      permalink: markdownItAnchor.permalink.linkAfterHeader({
+        class: "direct-link",
+        symbol: "",
+        style: "visually-hidden",
+        assistiveText: (title) => `Permalink to “${title}”`,
+        visuallyHiddenClass: "visually-hidden",
+      }),
+      slugify: (s) =>
+        s
+          .trim()
+          .toLowerCase()
+          .replace(/[\s+~\/]/g, "_")
+          .replace(/[().`,%·'"!?¿:@*]/g, ""),
+    });
   eleventyConfig.setLibrary("md", markdownLibrary);
 
   /**
@@ -208,8 +224,8 @@ module.exports = function(eleventyConfig) {
    * @link https://www.11ty.dev/docs/watch-serve/
    */
   // Watch JS
-  eleventyConfig.addWatchTarget('./src/assets/scripts/index.js');
-  eleventyConfig.addWatchTarget('./src/assets/styles/main.css');
+  eleventyConfig.addWatchTarget("./src/assets/scripts/index.js");
+  eleventyConfig.addWatchTarget("./src/assets/styles/main.css");
 
   /**
    * Override BrowserSync Server options
@@ -218,8 +234,8 @@ module.exports = function(eleventyConfig) {
    */
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
-      ready: function(err, browserSync) {
-        const content_404 = fs.readFileSync('./dist/404.html');
+      ready: function (err, browserSync) {
+        const content_404 = fs.readFileSync("./dist/404.html");
 
         browserSync.addMiddleware("*", (req, res) => {
           // Provides the 404 content without redirect.
@@ -229,16 +245,11 @@ module.exports = function(eleventyConfig) {
       },
     },
     ui: false,
-    ghostMode: false
+    ghostMode: false,
   });
 
   return {
-    templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid"
-    ],
+    templateFormats: ["md", "njk", "html", "liquid"],
 
     // If your site lives in a different subdirectory, change this.
     // Leading or trailing slashes are all normalized away, so don’t worry about those.
@@ -258,7 +269,7 @@ module.exports = function(eleventyConfig) {
       input: "./src",
       includes: "_includes",
       data: "_data",
-      output: "./dist"
-    }
+      output: "./dist",
+    },
   };
 };

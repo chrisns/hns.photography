@@ -9,9 +9,11 @@
     "build": "npm run clean && npm run eleventy:prod",
     "postbuild": "npm run postcss",
     "predev": "npm run sass:dev && npm run modernizr",
-    "dev": "concurrently 'npm run eleventy:dev' 'npm run sass:watch'",
+    "dev": "concurrently 'npm run eleventy:dev' 'npm run sass:watch' 'npm run decap-server'",
     "start": "npm run dev",
+    "decap-server": "decap-server",
     "debug": "DEBUG=* eleventy",
+    "fbscrape": "ts-node fbscrape.ts",
     "postcss": "postcss dist/assets/styles/main.css --replace",
     "sass:prod": "node-sass src/assets/styles/scss/ --output src/assets/styles/  --output-style compressed",
     "sass:dev": "node-sass src/assets/styles/scss/ --output src/assets/styles/ --source-map true --source-map-contents true",
@@ -44,11 +46,14 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@fullhuman/postcss-purgecss": "^5.0.0",
     "autoprefixer": "^10.4.0",
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
     "clean-css": "latest",
     "concurrently": "^8.0.0",
     "critical": "^6.0.0",
     "cross-env": "^7.0.3",
     "eleventy-critical-css": "^2.0.0",
+    "decap-server": "^3.0.1",
     "eleventy-plugin-pwa": "^1.0.8",
     "eleventy-plugin-reading-time": "^0.0.1",
     "html-minifier": "^4.0.0",
@@ -63,12 +68,15 @@
     "rimraf": "^3.0.2",
     "stylelint": "^14.0.1",
     "stylelint-config-standard-scss": "^2.0.0",
-    "stylelint-scss": "^4.0.0",
     "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "mermaid": "^9.1.2"
+    "mermaid": "^9.1.2",
+    "photoswipe": "^5.4.2"
   }
 }

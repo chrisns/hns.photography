@@ -4,13 +4,14 @@ backend:
 
 # Uncomment below to enable drafts
 # publish_mode: editorial_workflow
+local_backend: true
 
 media_folder: "src/assets/images" # Media files will be stored in the repo under images/uploads
 
 collections:
   #Global Settings
   - name: "global-settings"
-    label: "Global Settings"
+    label: "Settings"
     slug: "{{slug}}"
     files:
 
@@ -21,73 +22,66 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "string" }
-          - { label: "Author", name: "author.name", widget: "string" }
-          - { label: "Email", name: "author.email", widget: "string" }
-          - { label: "instagram", name: "author.instagram", widget: "string" }
-          - { label: "facebook", name: "author.facebook", widget: "string" }
-
-  # Pages
-  - name: "pages"
-    label: "Page"
-    slug: "{{slug}}"
-    files:
-
-      # Home page
-      - label: "Home Page"
-        name: "home"
-        file: "src/_data/home.json"
-        fields:
-          - { label: Title, name: title, widget: string }
-          - { label: "Body", name: "body", widget: "markdown", required: false }
-          - { label: Image, name: image, widget: image, required: false }
-          - {
-              label: Image Alt Text,
-              name: image_alt,
-              widget: string,
-              required: false,
-            }
-
-      # About page
-      - label: "About Page"
-        name: "about"
-        file: "src/pages/about.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: Subtitle, name: subtitle, widget: string, required: false }
-          - { label: "Body", name: "body", widget: "markdown", required: false }
-          - {
-              label: "Meta Description",
-              name: "metaDescription",
-              widget: "text",
-              required: false,
-            }
-          - { label: "Publish Date", name: "date", widget: "datetime" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - label: "Navigation" # https://www.11ty.dev/docs/plugins/navigation/
-            name: "eleventyNavigation"
+          - { label: "About", name: "about", widget: "markdown" }
+          - name: "author"
             widget: "object"
             fields:
-              - { label: "Key", name: "key", widget: "string" }
-              - { label: "Order", name: "order", widget: "number", default: 0 }
-
-      # Contact Page
-      - label: "Contact Page"
-        name: "contact"
-        file: "src/pages/contact.md"
+            - { label: "Name", name: "name", widget: "string" }
+            - { label: "Email", name: "email", widget: "string" }
+            - { label: "instagram", name: "instagram", widget: "string" }
+            - { label: "facebook", name: "facebook", widget: "string" }
+      - label: "Albums to pull"
+        name: "albums"
+        file: "src/_data/albums.json"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown", required: false }
-          - {
-              label: "Meta Description",
-              name: "metaDescription",
-              widget: "text",
-              required: false,
-            }
-          - { label: "Publish Date", name: "date", widget: "datetime" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - label: "Navigation" # https://www.11ty.dev/docs/plugins/navigation/
-            name: "eleventyNavigation"
-            widget: "object"
+          - name: album
+            widget: list
             fields:
-              - { label: "Key", name: "key", widget: "string" }
-              - { label: "Order", name: "order", widget: "number", default: 0 }
+            - { label: "Title", name: "title", widget: "string" }
+            - { label: "Description", name: "description", widget: "string" }
+            - { label: "Album ID", name: "albumid", hint: "e.g. a.1992235817715136", widget: "string" }
+            - { name: "photos", widget: "hidden" }
+
+  # - name: "pages"
+  #   label: "Page"
+  #   slug: "{{slug}}"
+  #   files:
+
+  #     # Home page
+  #     - label: "Home Page"
+  #       name: "home"
+  #       file: "src/_data/home.json"
+  #       fields:
+  #         - { label: Title, name: h1, widget: string }
+  #         - { label: "Body", name: "lead", widget: "markdown", required: false }
+  #         - { label: Image, name: image, widget: image, required: false }
+  #         - {
+  #             label: Image Alt Text,
+  #             name: image_alt,
+  #             widget: string,
+  #             required: false,
+  #           }
+
+  #     # About page
+  #     - label: "About Page"
+  #       name: "about"
+  #       file: "src/pages/about.md"
+  #       fields:
+  #         - { label: "Title", name: "title", widget: "string" }
+  #         - { label: Subtitle, name: subtitle, widget: string, required: false }
+  #         - { label: "Body", name: "body", widget: "markdown", required: false }
+  #         - {
+  #             label: "Meta Description",
+  #             name: "metaDescription",
+  #             widget: "text",
+  #             required: false,
+  #           }
+  #         - { label: "Publish Date", name: "date", widget: "datetime" }
+  #         - { label: "Permalink", name: "permalink", widget: "string" }
+  #         - label: "Navigation" # https://www.11ty.dev/docs/plugins/navigation/
+  #           name: "eleventyNavigation"
+  #           widget: "object"
+  #           fields:
+  #             - { label: "Key", name: "key", widget: "string" }
+  #             - { label: "Order", name: "order", widget: "number", default: 0 }
+

@@ -1,3 +1,0 @@
-user-agent: *
-allow: *
-sitemap: https://yetty.netlify.app/sitemap.xml

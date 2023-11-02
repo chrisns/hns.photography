@@ -2,22 +2,9 @@
   <div class="footer__top">
     <div class="footer__top-left mb-1">
       <a class="footer__logo home" href="{{ '/' | url }}">{{ metadata.title }}</a>
-      <p>This page was generated on {% today %}</p>
     </div>
     <div class="footer__top-right">
       <div class="footer__quick-links-wrapper">
-        <p class="h6 mb-0-5">Quick links</p>
-        <ul class="footer__quick-link-items">
-          <li class="footer__quick-link-item">
-            <a class="footer__link" href="{{ '/' | url }}">Home</a>
-          </li>
-          <li class="footer__quick-link-item">
-            <a class="footer__link" href="{{ '/about' | url }}">About</a>
-          </li>
-          <li class="footer__quick-link-item">
-            <a class="footer__link" href="mailto:{{ metadata.author.email }}">Contact</a>
-          </li>
-        </ul>
       </div>
       <div class="footer__contact-follow-wrapper">
         <div class="footer__contact">
@@ -58,4 +45,7 @@
   <p class="footer__copyright">&copy; {% year %}
       HNS Photography
   </p>
+  <p class="footer__copyright">
+    This page was generated on {% today %}
+
 </footer>
