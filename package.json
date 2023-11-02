@@ -1,5 +1,5 @@
 {
-  "name": "yetty",
+  "name": "hns website",
   "version": "1.0.0",
   "description": "Yet another Eleventy starter kit for my (& your) new projects.Built with accessibility and performance in mind.",
   "scripts": {
@@ -24,18 +24,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ygoex/yetty.git"
+    "url": "git://github.com/chrisns/hns.photphography.git"
   },
   "author": {
-    "name": "Yolanda Gorriz Exposito",
-    "email": "helloygoex@gmail.com",
-    "url": "https://ygoex.com/"
+    "name": "Chris Nesbitt-Smith",
+    "email": "chris@cns.me.uk",
+    "url": "https://cns.me/"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ygoex/yetty/issues"
+    "url": "https://github.com/chrisns/hns.photphography/issues"
   },
-  "homepage": "https://github.com/ygoex/yetty#readme",
+  "homepage": "https://github.com/chrisns/hns.photphography",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-img": "^1.0.0",
