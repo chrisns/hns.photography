@@ -2,7 +2,6 @@
 // https://sass-guidelin.es/#architecture
 // https://speakerdeck.com/dafed/managing-css-projects-with-itcss
 
-@import '../../../../node_modules/photoswipe/dist/photoswipe';
 @import "partials/01-Abstract/settings";
 @import "partials/01-Abstract/mixins";
 @import "partials/01-Abstract/extends";
@@ -25,3 +24,4 @@
 @import "partials/06-Pages/_not-found";
 @import "partials/07-Utilities/_utilities";
 @import "partials/08-MQ/_media-queries";
+@import '../../../../node_modules/photoswipe/dist/photoswipe';
