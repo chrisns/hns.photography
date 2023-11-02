@@ -164,6 +164,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./src/assets/styles/*.map");
     eleventyConfig.addPassthroughCopy("./src/assets/scripts/index.js");
   };
+  eleventyConfig.addPassthroughCopy("./src/admin");
+
 
   /**
    * Set custom markdown library instance
