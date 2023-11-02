@@ -1,6 +1,0 @@
-{
-  "tags": [
-    "posts"
-  ],
-  "permalink": "posts/{{ title | slug }}/"
-}
