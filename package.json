@@ -5,7 +5,7 @@
   "scripts": {
     "eleventy:dev": "cross-env ELEVENTY_ENV=development eleventy --serve",
     "eleventy:prod": "cross-env ELEVENTY_ENV=production eleventy",
-    "prebuild": "npm run lint:sass && NODE_ENV=production npm run sass:prod && npm run scripts && npm run modernizr",
+    "prebuild": "npm rebuild && npm run lint:sass && NODE_ENV=production npm run sass:prod && npm run scripts && npm run modernizr",
     "build": "npm run clean && npm run eleventy:prod",
     "postbuild": "npm run postcss",
     "predev": "npm run sass:dev && npm run modernizr",
