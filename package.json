@@ -68,7 +68,7 @@
     "rimraf": "^5.0.0",
     "stylelint": "^15.0.0",
     "stylelint-config-standard-scss": "^2.0.0",
-    "stylelint-order": "^5.0.0",
+    "stylelint-order": "^6.0.0",
     "stylelint-scss": "^4.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
