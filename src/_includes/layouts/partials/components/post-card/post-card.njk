@@ -2,29 +2,24 @@
 
 <div class="post-card__image">
 
-<div class="pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
+  <div class="pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
     {% for image in params.post.images %}
-  <a href="assets/images/scraped/{{ image.id }}.jpg" 
+      <a href="assets/images/scraped/{{ image.id }}.jpg" 
     data-pswp-width="{{image.width}}" 
     data-pswp-height="{{image.height}}"
     data-cropped="true" 
     target="_blank">
-    {% if loop.first %}
-      <img src="assets/images/scraped/{{ image.id }}.jpg" alt="{{ params.post.title }}">
-      <div class="post-card__content">
-          <p class="post-card__title h5">
-            {{ params.post.title }}
-          </p>
-          <p>{{ params.post.description }}</p>
-      </div>
-    {% endif %}
-  </a>
+        {% if loop.first %}
+          <img src="assets/images/scraped/{{ image.id }}.jpg" alt="{{ params.post.title }}">
+          <div class="post-card__content">
+            <p class="post-card__title h5">
+              {{ params.post.title }}
+            </p>
+            <p>{{ params.post.description }}</p>
+          </div>
+        {% endif %}
+      </a>
     {% endfor %}
-</div>
+  </div>
 
 </div>
-
-
-
-
-

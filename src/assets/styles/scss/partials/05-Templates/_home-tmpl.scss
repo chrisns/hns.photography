@@ -12,10 +12,9 @@
 
 .gradient-home {
   transition: background-image 1s;
-
-  // background-image: url("/assets/images/mesh-gradient-white.webp");
+  background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% auto;
 }
 
 /*! purgecss ignore */

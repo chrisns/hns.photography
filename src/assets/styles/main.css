@@ -516,8 +516,6 @@ picture {
 
 a {
   color: var(--link-color); }
-  a:visited {
-    color: var(--link-color-alt); }
 
 button {
   border: none;
@@ -969,7 +967,8 @@ figcaption {
   width: 100%;
   height: 9rem;
   padding: var(--space-lg-1h);
-  background-color: rgb(from var(--body-background) r g b / 50%); }
+  background-color: rgb(from var(--body-background) r g b / 50%);
+  backdrop-filter: blur(5px); }
   .post-card__content p:not(.post-card__title) {
     font-size: var(--font-size-base); }
 
@@ -1128,8 +1127,9 @@ header {
 
 .gradient-home {
   transition: background-image 1s;
+  background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: contain; }
+  background-size: 100% auto; }
 
 /*! purgecss ignore */
 .no-webp .gradient-home {

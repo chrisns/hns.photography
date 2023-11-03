@@ -66,9 +66,9 @@ picture {
 a {
   color: var(--link-color);
 
-  &:visited {
-    color: var(--link-color-alt);
-  }
+  // &:visited {
+  //   color: var(--link-color-alt);
+  // }
 }
 
 button {

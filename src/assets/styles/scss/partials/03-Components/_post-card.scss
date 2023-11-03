@@ -70,7 +70,8 @@
   height: 9rem;
   padding: var(--space-lg-1h);
   background-color: #{"rgb(from var(--body-background) r g b / 50%)"};
-
+  // background-color: var(--body-background);
+  backdrop-filter: blur(5px);
   p:not(.post-card__title) {
     font-size: var(--font-size-base);
   }
