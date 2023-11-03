@@ -17,10 +17,11 @@ eleventyNavigation:
   </section>
 
   <ul>
-    {% for album in albums.album %}
+    {# filter the first album that has the cover images #}
+    {% for i in range(1, albums.album | length) %}
       <li class="postlist__item post-card">
         {{ component('post-card', {
-          post: album
+          post: albums.album[i]
         }) }}
       </li>
     {% endfor %}
