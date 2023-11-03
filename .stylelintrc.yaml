@@ -15,7 +15,7 @@ rules:
   selector-attribute-quotes: always
   # Double-quotes are our convention throughout our codebase within (S)CSS. They also reflect how
   # attribute strings are normally quoted within the DOM.
-  string-quotes: double
+  #string-quotes: double
   property-no-unknown: null
   max-line-length: null
   # custom-property-pattern: null, because otherwise it throws following error
@@ -39,6 +39,7 @@ rules:
   #  no-global-function-names: null because throws error with map-get or unquote functions
   scss/no-global-function-names: null
   scss/at-import-no-partial-leading-underscore: null
+  scss/load-no-partial-leading-underscore: null
   order/order:
     - - type: at-rule
         hasBlock: false

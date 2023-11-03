@@ -11,9 +11,10 @@
 }
 
 .gradient-home {
+  transition: background-image 1s;
+
   // background-image: url("/assets/images/mesh-gradient-white.webp");
   background-repeat: no-repeat;
-  transition: background-image 1s;
   background-size: contain;
 }
 
@@ -23,6 +24,7 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .hidden {
   display: none;
 }

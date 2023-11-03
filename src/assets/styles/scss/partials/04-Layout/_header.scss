@@ -9,11 +9,11 @@ header {
 }
 
 .home {
-  background-image: url("/assets/images/logo.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 10rem;
   width: 400px;
+  height: 10rem;
   margin: var(--space-lg-1h);
+  background-image: url("/assets/images/logo.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
   font-size: 0.1px;
 }

@@ -1,7 +1,7 @@
 .grid {
   @extend %grid;
 
-  > *:not(figure):not(.hero) {
+  > *:not(figure, .hero) {
     @extend %grid-column-center;
   }
 }

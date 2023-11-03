@@ -1,6 +1,6 @@
 .tmpl-post {
   // Center all elements under article except picture and hero
-  article > *:not(figure):not(.hero) {
+  article > *:not(figure, .hero) {
     @extend %grid-column-center;
   }
 }
@@ -50,7 +50,7 @@
   }
 
   // Add margin top to all paragraphs that follow elements that are not another paragraph or a .direct-link
-  > *:not(p):not(.direct-link) + p {
+  > *:not(p, .direct-link) + p {
     margin-top: var(--space-lg-2);
   }
 

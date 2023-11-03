@@ -451,7 +451,7 @@ div.pswp__img--placeholder,
     .grid {
       grid-template-columns: minmax(var(--space-lg-1h), 1fr) minmax(auto, var(--w-breakpoint-md)) minmax(var(--space-lg-1h), 1fr); } }
 
-p, .grid > *:not(figure):not(.hero), .tmpl-post article > *:not(figure):not(.hero), .grid-column-center {
+p, .grid > * , .tmpl-post article > * , .grid-column-center {
   grid-column: 2 / auto; }
 
 .hero, .grid-column-full {
@@ -924,12 +924,12 @@ figcaption {
 
 .post-card {
   position: relative;
-  padding: 0%;
-  margin: 2px; }
+  margin: 2px;
+  padding: 0%; }
   @media all and (min-width: 60em) {
     .post-card {
-      float: left;
-      width: 49%; } }
+      width: 49%;
+      float: left; } }
   .post-card:hover .post-card__link,
   .post-card:hover .post-card__link:visited {
     color: var(--link-color);
@@ -943,10 +943,7 @@ figcaption {
 .post-card__link::after {
   display: block;
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   content: ""; }
 
 .post-card__link:focus-visible {
@@ -965,14 +962,14 @@ figcaption {
     width: 100%;
     object-fit: cover; }
 
-@use 'sass:color';
+@use "sass:color";
 .post-card__content {
-  padding: var(--space-lg-1h);
-  background-color: rgb(from var(--body-background) r g b / 50%);
   position: absolute;
-  width: 100%;
   top: 5.5rem;
-  height: 9rem; }
+  width: 100%;
+  height: 9rem;
+  padding: var(--space-lg-1h);
+  background-color: rgb(from var(--body-background) r g b / 50%); }
   .post-card__content p:not(.post-card__title) {
     font-size: var(--font-size-base); }
 
@@ -1023,12 +1020,12 @@ header {
       flex-direction: row; } }
 
 .home {
-  background-image: url("/assets/images/logo.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 10rem;
   width: 400px;
+  height: 10rem;
   margin: var(--space-lg-1h);
+  background-image: url("/assets/images/logo.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
   font-size: 0.1px; }
 
 .footer {
@@ -1130,8 +1127,8 @@ header {
     max-width: var(--line-length); }
 
 .gradient-home {
-  background-repeat: no-repeat;
   transition: background-image 1s;
+  background-repeat: no-repeat;
   background-size: contain; }
 
 /*! purgecss ignore */
@@ -1173,7 +1170,7 @@ header {
     margin-bottom: var(--space-lg-1); }
   .post__content > p + *:not(p)* {
     margin-top: var(--space-lg-2); }
-  .post__content > *:not(p):not(.direct-link) + p {
+  .post__content > * + p {
     margin-top: var(--space-lg-2); }
   .post__content > p:last-child {
     margin-bottom: var(--space-0); }
