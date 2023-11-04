@@ -2,6 +2,15 @@
 {% set socialImg = '/assets/images/logo.jpg' %}
 
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K13LH9YLN0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-K13LH9YLN0');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -9,11 +18,11 @@
   {% if page.url === "/" %}
     <title>{{ metadata.title }}</title>
     <meta name="description" content="{{ metadata.description }}">
-    <link rel="canonical" href="{{ metadata.url }}" />
+    <link rel="canonical" href="{{ metadata.url }}"/>
   {% else %}
     <title>{{ title }} | {{ metadata.title }}</title>
     <meta name="description" content="{{ description }}">
-    <link rel="canonical" href="{{ metadata.url }}{{ page.url }}" />
+    <link rel="canonical" href="{{ metadata.url }}{{ page.url }}"/>
   {% endif %}
 
   <meta name="author" content="{{ metadata.author.name }}"/>
@@ -39,31 +48,31 @@
   <link rel="shortcut icon" href="{{ '/assets/images/favicon/favicon.ico' | url }}" type="image/x-icon"/>
 
   <!-- Open Graph data -->
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="{{ imgUrl or socialImg | url }}" />
-  <meta property="og:image:width" content="1024" />
-  <meta property="og:image:height" content="579" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="{{ imgUrl or socialImg | url }}"/>
+  <meta property="og:image:width" content="1024"/>
+  <meta property="og:image:height" content="579"/>
   {% if page.url === "/" %}
-    <meta property="og:description" content="{{ metadata.description }}" />
-    <meta property="og:title" content="{{ metadata.title }}" />
-    <meta property="og:url" content = "{{ metadata.url }}/" />
+    <meta property="og:description" content="{{ metadata.description }}"/>
+    <meta property="og:title" content="{{ metadata.title }}"/>
+    <meta property="og:url" content = "{{ metadata.url }}/"/>
   {% else %}
-    <meta property="og:description" content="{{ description }}" />
-    <meta property="og:title" content="{{ title }}" />
-    <meta property="og:url" content="{{ metadata.url }}{{ page.url }}" />
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:url" content="{{ metadata.url }}{{ page.url }}"/>
   {% endif %}
 
   <!-- Twitter card -->
   {# <meta name="twitter:site" content="@{{ metadata.author.username }}"> #}
   {# <meta name="twitter:creator" content="@{{ metadata.author.username }}"> #}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="{{ imgUrl or socialImg | url }}" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="{{ imgUrl or socialImg | url }}"/>
   {% if page.url === "/" %}
-    <meta name="twitter:description" content="{{ metadata.description }}" />
-    <meta name="twitter:title" content="{{ metadata.title }}" />
+    <meta name="twitter:description" content="{{ metadata.description }}"/>
+    <meta name="twitter:title" content="{{ metadata.title }}"/>
   {% else %}
-    <meta name="twitter:description" content="{{ description }}" />
-    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:description" content="{{ description }}"/>
+    <meta name="twitter:title" content="{{ title }}"/>
   {% endif %}
 
 </head>
