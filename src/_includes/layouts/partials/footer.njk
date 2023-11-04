@@ -9,7 +9,7 @@
       <div class="footer__contact-follow-wrapper">
         <div class="footer__contact">
           <p class="h6 text-bold mb-0-5">Contact me</p>
-          <a class="footer__link" href="mailto:{{ metadata.author.email }}">
+          <a class="footer__link" onclick="dataLayer.push({'event': 'mailto'});" href="mailto:{{ metadata.author.email }}">
             {{ metadata.author.email }}</a>
         </div>
         <div class="footer__follow">

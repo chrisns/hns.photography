@@ -8,7 +8,7 @@
     {%- endfor %} #}
     {% if params.hasButton %}
       <li class="menu__item">
-        <a class="menu__link btn font-xs" href="{{ params.buttonHref | url }}" role = "button">{{ params.buttonText }}</a>
+        <a class="menu__link btn font-xs" onclick="dataLayer.push({'event': 'mailto'});" href="{{ params.buttonHref | url }}" role = "button">{{ params.buttonText }}</a>
       </li>
     {% endif %}
     <li class="menu__item toggle__theme--wrap ml-1h mr-1">
