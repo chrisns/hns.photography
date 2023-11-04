@@ -16,32 +16,8 @@ eleventyNavigation:
     <p class="lead h3">{{ metadata.about }}</p>
   </section>
 
-  <ul>
-    {# filter the first album that has the cover images #}
-    {% for i in range(1, albums.album | length) %}
-      <li class="postlist__item post-card">
-        {{ component('post-card', {
-          post: albums.album[i]
-        }) }}
-      </li>
-    {% endfor %}
-  </ul>
+  {{ component('albums', {albums: albums}) }}
 
-  <section class="reviews">
-    <h2>Reviews</h2>
-    <ul>
-      {% for review in reviews.review %}
-        {{ component('review', {
-          review: review
-        }) }}
-      {% endfor %}
-    </ul>
-  </section>
+  {{ component('reviews', {reviews: reviews}) }}
 
-  <script type="module">
-    import PhotoSwipeLightbox from "/assets/scripts/vendors/photoswipe-lightbox.esm.js";
-    import PhotoSwipe from "/assets/scripts/vendors/photoswipe.esm.js";
-    const lightbox = new PhotoSwipeLightbox({gallery: ".pswp-gallery", children: "a", pswpModule: PhotoSwipe});
-    lightbox.init();
-  </script>
 {% endblock %}

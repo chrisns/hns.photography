@@ -1,0 +1,11 @@
+<section class="reviews">
+  <h2>Reviews</h2>
+  <ul>
+    {% for review in params.reviews.review %}
+      <li>
+        <h3>{{review.name}}</h3>
+        <p>{{review.body}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
