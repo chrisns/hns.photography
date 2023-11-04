@@ -31,10 +31,9 @@ eleventyNavigation:
     <h2>Reviews</h2>
     <ul>
       {% for review in reviews.review %}
-        <li>
-          <h3>{{review.name}}</h3>
-          <p>{{review.body}}</p>
-        </li>
+        {{ component('review', {
+          review: review
+        }) }}
       {% endfor %}
     </ul>
   </section>
