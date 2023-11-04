@@ -195,7 +195,7 @@ module.exports = function (eleventyConfig) {
     linkify: true,
   })
     .use(mila, {
-      pattern: /^(?!(https:\/\/yetty\.netlify\.app|#)).*$/gm,
+      pattern: /^(?!(https:\/\/hns\.photography|#)).*$/gm,
       attrs: {
         target: "_blank",
         rel: "noopener noreferrer",
