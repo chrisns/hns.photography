@@ -4,7 +4,12 @@
 <html lang="en">
   {% include 'layouts/partials/head.njk' %}
   <body {% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFQLVNMR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <a class="skip-link btn btn-lg font-sm" href="#main-content">Skip to content</a>
 
     {% include 'layouts/partials/header.njk' %}
@@ -25,7 +30,7 @@
 
     {% block js %}{% endblock %}
     <script src="/javascript.js"></script>
-    <img class="hidden" alt="preloading" />
+    <img class="hidden" alt="preloading"/>
     <!--    This page was generated on {% today %} -->
   </body>
 </html>
