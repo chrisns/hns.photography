@@ -42,8 +42,6 @@
     "@11ty/eleventy": "^2.0.0",
     "@11ty/eleventy-img": "^3.0.0",
     "@11ty/eleventy-navigation": "^0.3.2",
-    "@11ty/eleventy-plugin-rss": "^1.1.2",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@fullhuman/postcss-purgecss": "^5.0.0",
     "autoprefixer": "^10.4.0",
     "axios": "^1.6.0",
@@ -54,8 +52,6 @@
     "cross-env": "^7.0.3",
     "eleventy-critical-css": "^2.0.0",
     "decap-server": "^3.0.1",
-    "eleventy-plugin-pwa": "^1.0.8",
-    "eleventy-plugin-reading-time": "^0.0.1",
     "html-minifier": "^4.0.0",
     "luxon": "^3.0.0",
     "markdown-it": "^13.0.0",
@@ -73,10 +69,8 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
     "webpack": "^5.61.0",
-    "webpack-cli": "^5.0.0"
-  },
-  "dependencies": {
-    "mermaid": "^10.0.0",
+    "webpack-cli": "^5.0.0",
     "photoswipe": "^5.4.2"
-  }
+  },
+  "dependencies": {}
 }

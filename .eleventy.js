@@ -1,21 +1,17 @@
 const { DateTime } = require("luxon");
 const fs = require("fs");
 const slugify = require("slugify");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const CleanCSS = require("clean-css");
 const criticalCss = require("eleventy-critical-css");
-// const pluginPWA = require("eleventy-plugin-pwa");
-const imageShortcode = require('./utils/shortcodes/imageProcess.js');
+const imageShortcode = require("./utils/shortcodes/imageProcess.js");
 const dateFilter = require("./utils/filters/dateFilter.js");
 const imgSize = require("./utils/filters/imgSize.js");
 const cacheBuster = require("./utils/filters/cacheBuster.js");
-const tagList = require("./utils/collections/tagList.js");
 // const readingTime = require('eleventy-plugin-reading-time');
-const mila = require('markdown-it-link-attributes');
+const mila = require("markdown-it-link-attributes");
 
 // Import transforms
 const htmlMinTransform = require("./utils/transforms/html-min-transform.js");
@@ -32,8 +28,6 @@ module.exports = function (eleventyConfig) {
    *
    * @link https://www.11ty.dev/docs/plugins/
    */
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
   // CriticalCSS
   if (env === "production") {
@@ -42,18 +36,6 @@ module.exports = function (eleventyConfig) {
       width: 1300,
     });
   }
-  // PWA
-  // eleventyConfig.addPlugin(pluginPWA);
-  // eleventyConfig.addPlugin(readingTime);
-
-  // Setup mermaid markdown highlighter
-  const highlighter = eleventyConfig.markdownHighlighter;
-  eleventyConfig.addMarkdownHighlighter((str, language) => {
-    if (language === "mermaid") {
-      return `<pre class="mermaid">${str}</pre>`;
-    }
-    return highlighter(str, language);
-  });
 
   /**
    * Opts in to a full deep merge when combining the Data Cascade.
@@ -142,13 +124,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("htmlmin", htmlMinTransform);
 
   /**
-   * Add Collections
-   *
-   * @link https://www.11ty.io/docs/collections
-   */
-  eleventyConfig.addCollection("tagList", tagList);
-
-  /**
    * Passthrough file copy
    *
    * @link https://www.11ty.io/docs/copy/
@@ -156,13 +131,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/assets/images");
   eleventyConfig.addPassthroughCopy("./src/assets/images/scraped");
   eleventyConfig.addPassthroughCopy("./src/assets/styles/*.css");
-  // eleventyConfig.addPassthroughCopy({
-  //   "node_modules/mermaid/dist/mermaid.min.js":
-  //     "/assets/scripts/vendors/mermaid.min.js",
-  // });
 
-  // eleventyConfig.addPassthroughCopy("./src/robots.txt");
-  // eleventyConfig.addPassthroughCopy("./src/manifest.json");
   eleventyConfig.addPassthroughCopy(
     "./src/assets/scripts/vendors/modernizr.min.js"
   );
