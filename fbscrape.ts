@@ -87,7 +87,10 @@ function albumScraper(response: string | AnyNode | AnyNode[] | Buffer) {
     if (scriptContent && scriptContent.includes('CLDRDateRenderingClientRollout')) {
       // Return the script content if the specified string is found
       try {
-        return JSON.parse(scriptContent).require[0][3][0].__bbox.require[7][3][1].__bbox.result.data.album.media.edges
+        const edges = JSON.parse(scriptContent).require[0][3][0].__bbox.require[7][3][1].__bbox.result.data.album?.media.edges
+        if (!edges)
+          return []
+        return edges
           .map((photo: { node: any; }) => {
             return {
               id: photo.node.id,
