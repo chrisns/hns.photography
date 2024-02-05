@@ -86,15 +86,20 @@ function albumScraper(response: string | AnyNode | AnyNode[] | Buffer) {
     // console.log(scriptContent);
     if (scriptContent && scriptContent.includes('CLDRDateRenderingClientRollout')) {
       // Return the script content if the specified string is found
-      return JSON.parse(scriptContent).require[0][3][0].__bbox.require[7][3][1].__bbox.result.data.album.media.edges
-        .map((photo: { node: any; }) => {
-          return {
-            id: photo.node.id,
-            uri: photo.node.image.uri,
-            height: photo.node.image.height,
-            width: photo.node.image.width
-          }
-        })
+      try {
+        return JSON.parse(scriptContent).require[0][3][0].__bbox.require[7][3][1].__bbox.result.data.album.media.edges
+          .map((photo: { node: any; }) => {
+            return {
+              id: photo.node.id,
+              uri: photo.node.image.uri,
+              height: photo.node.image.height,
+              width: photo.node.image.width
+            }
+          })
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+      }
+
     }
   }
   return null;
