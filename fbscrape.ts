@@ -83,8 +83,7 @@ function albumScraper(response: string | AnyNode | AnyNode[] | Buffer) {
   // Loop through all script tags
   for (const scriptTag of $('script').toArray()) {
     const scriptContent = $(scriptTag).html();
-    // console.log(scriptContent);
-    if (scriptContent && scriptContent.includes('CLDRDateRenderingClientRollout')) {
+    if (scriptContent && scriptContent.includes('"__isMedia":"Photo"')) {
       // Return the script content if the specified string is found
       try {
         const edges = JSON.parse(scriptContent).require[0][3][0].__bbox.require[7][3][1].__bbox.result.data.album?.media.edges
@@ -105,5 +104,5 @@ function albumScraper(response: string | AnyNode | AnyNode[] | Buffer) {
 
     }
   }
-  return null;
+  return [];
 }
