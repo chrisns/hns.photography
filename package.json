@@ -63,7 +63,7 @@
     "postcss-cli": "^11.0.0",
     "rimraf": "^6.0.0",
     "stylelint": "^15.11.0",
-    "stylelint-config-standard-scss": "11.1.0",
+    "stylelint-config-standard-scss": "14.0.0",
     "stylelint-order": "^6.0.0",
     "stylelint-scss": "^5.3.0",
     "ts-node": "^10.9.1",
