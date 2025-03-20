@@ -41,7 +41,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-img": "^6.0.0",
-    "@11ty/eleventy-navigation": "^0.3.2",
+    "@11ty/eleventy-navigation": "^1.0.0",
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "autoprefixer": "^10.4.0",
     "axios": "^1.6.0",
